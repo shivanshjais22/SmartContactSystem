@@ -14,6 +14,6 @@ public class SmartContactApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SmartContactApplication.class, args);
+		
 	}
-
 }

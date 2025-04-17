@@ -1,144 +1,78 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: Layout(~{::section})}">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+  <meta charset="UTF-8">
+  <title>Register</title>
 </head>
 <body>
 
-<!-- fietioco  -->
+<!-- Registration Section -->
 <section>
   <div class="container">
     <div class="row">
       <div class="col-md-8 offset-md-2">
-      
-      <div class="my-card mt-2">
- <!--      
-     <div th:if="${h1.message}"   class="alert alert-primary" role="alert"  >
-<p th:text="${h.h1.contain})">
-  <th:block th:text="${#h.r}"></th:block>
-  
-  This is a primary alert—check it out!
-</div>
-       -->
-       
-       
-         <div th:if="${session.h1}" th:classappend="${session.h1.type}" class="alert alert-primary" role="alert"  >
 
-<p th:text="${session.h1.contain}">
-<th:block th:remove="all" th:text="${#session.removeAttribute('h1')}"></th:block>
-</div>
-       
-       
-       
-       
-      <div class="cont text-center ">
-      <img class="singupphoto" alt="" src="" th:src="@{/img/p2.png}"/>
-      </div>
-         
-           <h1 class="text-center">Register Here !!</h1>
-     <form action="" th:action="@{/do_regester}" method="post" th:object="${user}">
-     
-     
-     <!--name attribut  -->
-     
-      <div class="form-group">
-      
-    <label for="name_field">Your Name</label>
-   
-    <input type="text"
-     class="form-control
-     " id="name_field"
-      aria-describedby="emailHelp" 
-      placeholder="Enter your name"
-      required="required"   
-      th:field="*{name}"
-     />  
-     <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></div>
-     
-      
-  </div>
-     
-     
-     
-     
-     
-     
-      <!--Email  -->
-     
-      <div class="form-group">
-      
-    <label for="name_email">Your Name</label>
-   
-    <input type="email"
-    name="email"
-     class="form-control
-     " id="name_email"
-      aria-describedby="emailHelp" 
-      placeholder="Enter your Email"
-      required="required"
-       th:value="${user.email}"
-     />  
-      
-  </div>
-  
-  
-  
-  
-   <!--password  -->
-     
-      <div class="form-group">
-      
-    <label for="name_password">Your Name</label>
-   
-    <input type="password"
-    name="password"
-     class="form-control
-     " id="name_password"
-      aria-describedby="emailHelp" 
-      placeholder="Enter your password"
-      required="required"
-     />  
-      
-  </div>
-     
-    
-     
-        <!--about  -->
-     
-      <div class="form-group">
-      
-    
-   
- <textarea name="about" th:value="${user.about}"   placeholder="Enter about " rows="10" cols="50"></textarea> 
-      
-  </div>
-     
-     <!-- terms and condition -->
+        <div class="my-card mt-2">
 
-<div class="from-group from-check">
+          <!-- Display alert if there's a session message -->
+          <div th:if="${session.h1}" th:classappend="${session.h1.type}" class="alert alert-primary" role="alert">
+            <p th:text="${session.h1.contain}"></p>
+            <th:block th:remove="all" th:text="${#session.removeAttribute('h1')}"></th:block>
+          </div>
 
-<input type="checkbox"
-name="agreement"
-class="from-check-input"
-id="term"
->
+          <div class="cont text-center">
+            <img class="singupphoto" alt="" src="" th:src="@{/img/p2.png}"/>
+          </div>
 
-<label for="term">Accept Term and condition</label>
+          <h1 class="text-center">Register Here!!</h1>
+          <form action="" th:action="@{/do_regester}" method="post" th:object="${user}">
 
-</div>    
-     
-   <div  class="container text-center"  >
-   <button type="submit" class="btn bg-primary text-white">Submit</button>
-   
-    <button type="reset" class="btn btn-warning  text-white">Reset</button>
- 
-   </div>  
-     </form>
-      </div>
+            <!-- Name Field -->
+            <div class="form-group">
+              <label for="name_field">Your Name</label>
+              <input type="text" class="form-control" id="name_field" placeholder="Enter your name" required="required" th:field="*{name}" />
+              <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></div>
+            </div>
+
+            <!-- Email Field -->
+            <div class="form-group">
+              <label for="name_email">Your Email</label>
+              <input type="email" class="form-control" id="name_email" placeholder="Enter your Email" required="required" th:field="*{email}" />
+              <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></div>
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-group">
+              <label for="name_password">Your Password</label>
+              <input type="password" class="form-control" id="name_password" placeholder="Enter your password" required="required" th:field="*{password}" />
+              <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger"></div>
+            </div>
+
+            <!-- About Field -->
+            <div class="form-group">
+              <label for="name_about">About</label>
+              <textarea name="about" th:field="*{about}" placeholder="Enter about" rows="5" class="form-control"></textarea>
+            </div>
+
+            <!-- Terms and Condition Checkbox -->
+            <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" id="term" th:field="*{agreement}" />
+              <label class="form-check-label" for="term">Accept Terms and Conditions</label>
+            </div>
+
+            <!-- Submit and Reset Buttons -->
+            <div class="container text-center">
+              <button type="submit" class="btn bg-primary text-white">Submit</button>
+              <button type="reset" class="btn btn-warning text-white">Reset</button>
+            </div>
+
+          </form>
+        </div>
+
       </div>
     </div>
   </div>
 </section>
+
 </body>
 </html>

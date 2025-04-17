@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,6 +24,9 @@ public class Controller1 {
 
     private final SmartContactApplication smartContactApplication;
 	
+    @Autowired
+    private BCryptPasswordEncoder pass;
+    
 	@Autowired
     private	UserRepository u;
 
@@ -36,7 +40,10 @@ public class Controller1 {
 		return "index";
 	}
 	
-	
+	   @GetMapping("/login")
+	    public String loginPage() {
+	        return "login";  // Returning the login page view
+	    }
 
 	@GetMapping("/about")
 	public String about(Model m) {
@@ -81,9 +88,11 @@ public class Controller1 {
 		System.out.println(u.getPassword());
 		System.out.println(u.getAbout());
 		u.setImageurl("defualt.jpg");
-		u.setRole("robvjdbv");
+		u.setRole("USER");
 		u.setEnabled(true);
+		u.setPassword(pass.encode(u.getPassword()));
 		this.u.save(u);
+		u.setPassword(pass.encode(u.getPassword()));
 		System.out.println("done work");
 		
 		h.setAttribute("h1", new Message("success fulll!!","alert-error"));

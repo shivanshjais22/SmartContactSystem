@@ -126,4 +126,15 @@ public class User {
     public void setContact(List<Contact> contact) {
         this.contact = contact;
     }
+    
+    @Transient
+    private boolean agreement;
+
+    public boolean isAgreement() {
+        return agreement;
+    }
+
+    public void setAgreement(boolean agreement) {
+        this.agreement = agreement;
+    }
 }

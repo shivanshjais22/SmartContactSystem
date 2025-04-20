@@ -1,7 +1,6 @@
 package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,8 +23,8 @@ public class Controller1 {
 
     private final SmartContactApplication smartContactApplication;
 	
-    @Autowired
-    private BCryptPasswordEncoder pass;
+   // @Autowired
+   // private BCryptPasswordEncoder pass;
     
 	@Autowired
     private	UserRepository u;
@@ -40,10 +39,11 @@ public class Controller1 {
 		return "index";
 	}
 	
-	   @GetMapping("/login")
-	    public String loginPage() {
-	        return "login";  // Returning the login page view
-	    }
+	@GetMapping("/login")
+	public String loginPage() {
+	    return "signup";  // no extension needed
+	}
+
 
 	@GetMapping("/about")
 	public String about(Model m) {
@@ -52,14 +52,14 @@ public class Controller1 {
 	}
 	
 	
-	@GetMapping("/singup")
-	public String sing(Model m) {
-		m.addAttribute("user", new User());
-		return "singup";
+	@GetMapping("/signup")
+	public String signup(Model m) {
+	    m.addAttribute("user", new User());
+	    return "signup"; // matches 'signup.html'
 	}
 	
 	
-	@PostMapping("/do_regester")
+	@PostMapping("/do_register")  
 	public String registre(@Valid @ModelAttribute("user") User u,
             BindingResult result, // RIGHT AFTER the @Valid param
             @RequestParam(value = "agreement", defaultValue = "false") boolean agreement,
@@ -90,9 +90,9 @@ public class Controller1 {
 		u.setImageurl("defualt.jpg");
 		u.setRole("USER");
 		u.setEnabled(true);
-		u.setPassword(pass.encode(u.getPassword()));
+	//	u.setPassword(pass.encode(u.getPassword()));
 		this.u.save(u);
-		u.setPassword(pass.encode(u.getPassword()));
+		//u.setPassword(pass.encode(u.getPassword()));
 		System.out.println("done work");
 		
 		h.setAttribute("h1", new Message("success fulll!!","alert-error"));
@@ -102,12 +102,24 @@ public class Controller1 {
 		}
 		catch (Exception e) {
 		e.printStackTrace();
-		m.addAttribute("", e);
+		m.addAttribute("exception", e);
 		h.setAttribute("h1", new Message("masasde went wrong !!","alert-error"));
+		return "/signup";
 		}
 		
-		return "singup";
+		return "redirect:/signup";
+		
 	}
 	
+	@Controller
+	public class UserController {
+
+	    @GetMapping("/user/index")
+	    public String userIndex(Model model) {
+	        // Add any attributes to the model as needed
+	        return "user/index"; // this should match the template file (e.g., src/main/resources/templates/user/index.html)
+	    }
+	}
+
 	
 }

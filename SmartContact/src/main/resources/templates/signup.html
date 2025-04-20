@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: Layout(~{::section})}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="base :: Layout(~{::section})">
+ 
 <head>
   <meta charset="UTF-8">
   <title>Register</title>
 </head>
 <body>
+
+
 
 <!-- Registration Section -->
 <section>
@@ -17,7 +21,7 @@
           <!-- Display alert if there's a session message -->
           <div th:if="${session.h1}" th:classappend="${session.h1.type}" class="alert alert-primary" role="alert">
             <p th:text="${session.h1.contain}"></p>
-            <th:block th:remove="all" th:text="${#session.removeAttribute('h1')}"></th:block>
+           <!--  <th:block th:remove="all" th:text="${#session.removeAttribute('h1')}"></th:block>  -->
           </div>
 
           <div class="cont text-center">
@@ -25,12 +29,12 @@
           </div>
 
           <h1 class="text-center">Register Here!!</h1>
-          <form action="" th:action="@{/do_regester}" method="post" th:object="${user}">
+          <form action="" th:action="@{/do_register}" method="post" th:object="${user}">
 
             <!-- Name Field -->
             <div class="form-group">
               <label for="name_field">Your Name</label>
-              <input type="text" class="form-control" id="name_field" placeholder="Enter your name" required="required" th:field="*{name}" />
+              <input type="text" class="form-control" id="name_field" placeholder="Enter your name" th:field="*{name}" />
               <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></div>
             </div>
 

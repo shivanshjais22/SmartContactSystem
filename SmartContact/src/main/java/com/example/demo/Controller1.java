@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -22,7 +24,7 @@ import jakarta.validation.Valid;
 @Controller
 public class Controller1 {
 
-    private final SmartContactApplication smartContactApplication;
+  //  private final SmartContactApplication smartContactApplication;
 	
     @Autowired
     private BCryptPasswordEncoder pass;
@@ -30,11 +32,9 @@ public class Controller1 {
 	@Autowired
     private	UserRepository u;
 
-    Controller1(SmartContactApplication smartContactApplication) {
-        this.smartContactApplication = smartContactApplication;
-    }
 
-	@GetMapping("/index")
+	// thise for index page 
+	@GetMapping("/")
 	public String str(Model m) {
 		m.addAttribute("title","disha shivansh jais ");
 		return "index";
@@ -48,6 +48,13 @@ public class Controller1 {
 	}
 	
 	
+	@GetMapping("/log")
+	public String showLoginPage() {
+
+		
+	    return " login";  // Ensure this matches the template name without the ".html"
+	}
+
 	@GetMapping("/signup")
 	public String signup(Model m) {
 	    m.addAttribute("user", new User());
@@ -110,21 +117,15 @@ public class Controller1 {
 	
 	
 	@GetMapping("/user/index")
-	public String userDashboard(Model model) {
-	    model.addAttribute("title", "User Dashboard");
+	public String userDashboard(Model model,Principal p) {
+		
+		 String Username=p.getName();
+			System.out.println(Username);
+	User user=u.findByEmail(Username);
+		//	System.out.println(p.getClass().getName());
+	    model.addAttribute("user", user);
 	    return "user/index"; // This should be src/main/resources/templates/user/index.html
 	}
 	
 	
-	/*(@GetMapping("/l")
-	public String getlogin1(Model m) {
-		m.addAttribute("title", "heyyy ");
-		return "login";
-	} */
-	
-//	@GetMapping("/l")
-//	public String getlogin(Model m) {
-//		m.addAttribute("title", "heyyy ");
-//		return "login";
-//	}
 }

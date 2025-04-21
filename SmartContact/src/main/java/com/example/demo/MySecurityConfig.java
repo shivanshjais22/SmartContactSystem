@@ -53,7 +53,13 @@ public class MySecurityConfig {
                 .requestMatchers("/user/**").hasRole("USER")
                 .requestMatchers("/**").permitAll()
             )
-            .formLogin(Customizer.withDefaults()) // Default login page
+            .formLogin(form -> form
+                    .loginPage("/log")
+                    .loginProcessingUrl("/log")
+                    .defaultSuccessUrl("/user/index")
+                    .failureUrl("/login_fail")
+                    .permitAll()
+                )
             .csrf(csrf -> csrf.disable());
 
         return http.build();

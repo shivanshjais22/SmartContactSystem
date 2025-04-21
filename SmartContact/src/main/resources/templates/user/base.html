@@ -29,19 +29,14 @@
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       
+     
       
       <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li>
-      
-      
-      
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" th:href=@{/log}>Login</a>
+        <a class="nav-link disabled" href="#" th:href=@{/log}><samp th:text="${user.name}"></samp></a>
       </li>
       
       <li class="nav-item">
-        <a  th:href="@{/signup}" class="nav-link">Singnup</a>
+        <a  th:href="@{/logout}" class="nav-link">Logout</a>
       </li>
       
     </ul>

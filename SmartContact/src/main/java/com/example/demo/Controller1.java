@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,8 +24,8 @@ public class Controller1 {
 
     private final SmartContactApplication smartContactApplication;
 	
-   // @Autowired
-   // private BCryptPasswordEncoder pass;
+    @Autowired
+    private BCryptPasswordEncoder pass;
     
 	@Autowired
     private	UserRepository u;
@@ -33,17 +34,12 @@ public class Controller1 {
         this.smartContactApplication = smartContactApplication;
     }
 
-	@GetMapping("/")
+	@GetMapping("/index")
 	public String str(Model m) {
 		m.addAttribute("title","disha shivansh jais ");
 		return "index";
 	}
 	
-	@GetMapping("/login")
-	public String loginPage() {
-	    return "signup";  // no extension needed
-	}
-
 
 	@GetMapping("/about")
 	public String about(Model m) {
@@ -90,7 +86,8 @@ public class Controller1 {
 		u.setImageurl("defualt.jpg");
 		u.setRole("USER");
 		u.setEnabled(true);
-	//	u.setPassword(pass.encode(u.getPassword()));
+	u.setPassword(pass.encode(u.getPassword()));
+	 u.setEnabled(true);
 		this.u.save(u);
 		//u.setPassword(pass.encode(u.getPassword()));
 		System.out.println("done work");
@@ -111,15 +108,23 @@ public class Controller1 {
 		
 	}
 	
-	@Controller
-	public class UserController {
-
-	    @GetMapping("/user/index")
-	    public String userIndex(Model model) {
-	        // Add any attributes to the model as needed
-	        return "user/index"; // this should match the template file (e.g., src/main/resources/templates/user/index.html)
-	    }
-	}
-
 	
+	@GetMapping("/user/index")
+	public String userDashboard(Model model) {
+	    model.addAttribute("title", "User Dashboard");
+	    return "user/index"; // This should be src/main/resources/templates/user/index.html
+	}
+	
+	
+	/*(@GetMapping("/l")
+	public String getlogin1(Model m) {
+		m.addAttribute("title", "heyyy ");
+		return "login";
+	} */
+	
+//	@GetMapping("/l")
+//	public String getlogin(Model m) {
+//		m.addAttribute("title", "heyyy ");
+//		return "login";
+//	}
 }

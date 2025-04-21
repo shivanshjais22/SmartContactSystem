@@ -8,8 +8,5 @@ import com.example.User.User;
 
 @Repository
 public interface UserRepository  extends JpaRepository<	User, Integer> {
-
-	  // Custom query to find user by email (username)
-    @Query("select u from User u where u.email =:email")
-    User getUserbyname(@Param("email") String email);
+	  User findByEmail(String email);
 }

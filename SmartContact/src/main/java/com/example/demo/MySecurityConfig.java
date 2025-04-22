@@ -57,7 +57,7 @@ public class MySecurityConfig {
                     .loginPage("/log")
                     .loginProcessingUrl("/log")
                     .defaultSuccessUrl("/user/index")
-                    .failureUrl("/login_fail")
+                   // .failureUrl("/login_fail")
                     .permitAll()
                 )
             .csrf(csrf -> csrf.disable());

@@ -24,7 +24,72 @@ body {
 	
 }
 
+@media only screen and(max-width:600px){
+	.sidebar{
+	
+	width: 18%;
+	background: white;
+	height: 100%;
+	position: fixed;
+	padding-top: 45px;
+	
+	
+}
+	
+	.contain{
+	margin-left: 0%!;
+	
+}
+
+}
 
 .singupphoto{
 	width: 80px;
+}
+
+
+.sidebar{
+	
+	width: 18%;
+	background: white;
+	height: 100%;
+	position: fixed;
+	padding-top: 45px;
+	
+	
+}
+
+.sidebar a{
+	display: block;
+	width: 100%;
+	padding: 10px 25px;
+  text-decoration: none;
+  color: gray;
+	
+	}
+
+
+.sidebar a:hover{
+	background: #e2e2e2;
+}
+
+.sidebar .divider{
+	height: .5px;
+	width: 100%;
+	background: #e2e2e2;
+}
+
+
+.contain{
+	margin-left: 20%;
+	
+}
+
+
+.sidebar .cross{
+	position: absolute;
+	top: 0;
+	right: 35px;
+	font-size: 36px;
+	cursor: pointer;
 }

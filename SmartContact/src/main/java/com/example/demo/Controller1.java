@@ -115,17 +115,7 @@ public class Controller1 {
 		
 	}
 	
-	
-	@GetMapping("/user/index")
-	public String userDashboard(Model model,Principal p) {
-		
-		 String Username=p.getName();
-			System.out.println(Username);
-	User user=u.findByEmail(Username);
-		//	System.out.println(p.getClass().getName());
-	    model.addAttribute("user", user);
-	    return "user/index"; // This should be src/main/resources/templates/user/index.html
-	}
+
 	
 	
 }

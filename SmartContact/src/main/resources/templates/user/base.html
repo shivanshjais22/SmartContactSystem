@@ -10,13 +10,15 @@
           crossorigin="anonymous">
           
           <title th:text="${title}">Base html</title>
-          
+          <!--copy cdn from   https://cdnjs.com/libraries/font-awesome/5.15.4  -->
+        
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
    <link rel="stylesheet" th:href="@{/css/index.css}">
    
 </head>
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-dark  bg-primary">
+  <nav  class="navbar fixed-top   navbar navbar-expand-lg navbar-light bg-dark  bg-primary">
  <a class="navbar-brand text-center" href="#">Smart Contact Manager</a>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,10 +45,32 @@
   </div>
 </nav>
 
+<!-- Thise Side BAr -->
+<div class="sidebar mt-5">
+<span class="cross" onclick="toggleFunction()">&times;</span>
+
+   <a  th:href="@{/user/index}" class="item"> <i class="fa-solid fa-house"></i> Home </a>
+    <a href="#" class="item"> <i class="fa-solid fa-address-book"></i> View Contact</a>
+     <a th:href="@{/user/add}" class="item"><i class="fa-solid fa-address-card"></i> Add Contact</a>
+      <a href="#" class="item"><i class="fa-solid fa-user"></i> Your Profile</a>
+       <a th:href="@{/logout}"class="item"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+</div>
+
+
+
+
     <!-- Content block to be replaced -->
+    <div class="contain mt-2">
+    
+    <i onclick="toggleFunction()" class="fas fa-bars mt-5"></i>
+    
+    
+    
   <section th:fragment="Layout(content)">
   <div th:replace="${content}"></div>
 </section>
+</div>
+
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

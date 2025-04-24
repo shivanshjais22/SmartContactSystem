@@ -64,8 +64,19 @@
     
     <i onclick="toggleFunction()" class="fas fa-bars mt-5"></i>
     
-    
-    
+<div th:if="${session.message}" class="container">
+
+
+
+       <div  th:classappend="${'alert-'+session.message.type}" class="alert text-center" role="alert">
+<span th:text="${session.message.contain}"></span>
+
+</div>
+      
+      <th:block th:if="${session.message}" th:text="${#session.removeAttribute('message')}"></th:block>
+</div>
+
+
   <section th:fragment="Layout(content)">
   <div th:replace="${content}"></div>
 </section>

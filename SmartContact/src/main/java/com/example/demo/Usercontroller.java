@@ -6,6 +6,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.security.Principal;
+
+import com.springsecurity.Serveses;
 import com.springsecurity.UserDetailServiceImp;
 
 import jakarta.servlet.http.HttpSession;
@@ -72,7 +74,7 @@ public class Usercontroller {
 	@PostMapping("/post-contact")
 	public String process(@ModelAttribute Contact contact,@RequestParam("p") MultipartFile  File,Principal p,HttpSession h1) {
 	
-
+		 Serveses.removeMessage(); 
 		try {
 		
 	String str=	p.getName();
@@ -118,7 +120,9 @@ System.out.println("heyyyy");
 		
 		return "/user/add_contact";
 	}
-		
+	
+	
+	
 		
 
 }

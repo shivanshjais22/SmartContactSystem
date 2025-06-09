@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="main">
+        <h3>Enter your login credentials</h3>
+
+<div th:if="${session.massage}" class="alert alert-warning" role="alert" th:text="${session.message}"></div>
+
+
+        <form th:action="@{/forgetemail}" method="post">
+            <label for="first">
+                Email:
+            </label>
+            <input type="text" id="first" name="email" 
+                placeholder="Enter your Email" required>
+
+            
+
+            <div class="wrap">
+                <button type="submit">
+                    Submit
+                </button>
+            </div>
+        </form>
+        
+        <p>Not registered?
+            <a href="#" style="text-decoration: none;">
+                Create an account
+            </a>
+        </p>
+    </div>
+</body>
+</html>

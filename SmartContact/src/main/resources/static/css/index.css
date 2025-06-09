@@ -100,6 +100,25 @@ body {
 	object-fit: cover;
 	border-radius:50%;
 	/* border: 1px solid black; */
-	 
+	  
+}
+
+.class-serch{
+	position: relative;
+}
+
+.serch-result{
+	position: absolute;
+	background: white;
+	width: 100%;
+	padding: 10px;
+	border: 1px solid gray;
+	display: none;
+}
+
+.active{
+background:#009688 !important;
+color: white !important;
+	
 }
 

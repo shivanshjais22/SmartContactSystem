@@ -26,4 +26,7 @@ Frontend: HTML, CSS, JavaScript
 
 Database: MySQL (or any SQL-based database)
 
-API: RESTful Web Services
+API: RESTful Web Services.
+
+
+

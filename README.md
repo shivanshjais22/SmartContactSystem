@@ -11,7 +11,7 @@ Secure session handling with Spring Security
 
 REST API integration for backend communication
 
-Responsive UI using HTML, CSS, and JavaScript
+Responsive UI using HTML, CSS, and JavaScript.
 
 Database integration for persistent contact storage
 

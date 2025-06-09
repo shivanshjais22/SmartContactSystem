@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Contact Detail</title>
+</head>
+
+<body>
+
+    <!-- Replaces section into layout template -->
+    <div th:replace="user/base :: Layout(~{::section})">
+    <section>
+      <div class="container">
+      <div class="card text-center">
+      <div class="text-center">
+       <img  style="height: 200px; width: 200px;"  class="contact_photo"   th:src="@{'/img/'+${user.imageurl}}"  alt="profile_photo"  >
+      
+      </div>
+      <h1 class="text-center  mt-3"  th:text="${user.name}" > </h1>
+      <div class="card-body">
+      
+      
+ 
+        
+   <table class="table">
+  <thead>
+   <tr>
+      <th>#ID</th>
+      <th>SCMUSER <samp th:text="${user.id}"></samp></th>
+      
+    
+    </tr>
+  </thead>
+  <tbody>
+   
+    <tr>
+      <th scope="row">Email</th>
+     <td><samp th:text="${user.email}"></samp></td>
+      
+    
+    </tr>
+    
+    <tr>
+      <th scope="row">Role</th>
+     <td><samp th:text="${user.role}"></samp></td>
+      
+    
+    </tr>
+    
+    <tr>
+      <th scope="row">Status</th>
+     <td><samp th:text="${user.enabled}"></samp></td>
+      
+    
+    </tr>
+    
+
+ <tr>
+      <th scope="row">About</th>
+     <td><samp th:text="${user.about}"></samp></td>
+      
+    
+    </tr>
+    
+  </tbody>
+</table>
+      
+      
+     
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      </div>
+      
+      
+      
+      
+      
+      </div>
+      
+      
+      </div>
+      
+        <script>
+   
+   $(document).ready(()=>{
+	   $('.item').removeClass('active');
+	   $('#link-p').addClass('active');
+	   
+	   
+   })
+   
+  
+   
+   
+   </script>
+   
+   
+       </section>
+       
+    </div>
+</body>
+</html>
